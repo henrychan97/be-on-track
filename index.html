@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>On Track — Academic Management for Middle & High School Students</title>
+<meta name="description" content="On Track is academic management for grades 6–12. We become your child's academic manager — organizing assignments, building accountability, and making sure the work actually gets done." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page:#FFFFFF;--surface:#EAF6F5;--surface2:#F4FAFB;--ink:#23405E;--ink-soft:#5E7287;
+    --navy-dark:#1E3450;--red:#E43C48;--red-deep:#D2293A;--teal:#3FB1AC;--teal-soft:#C3E8E5;
+    --teal-deep:#2C8480;--blue:#5B8FCF;--blue-deep:#3A6BB0;--line:rgba(35,64,94,0.14);
+    --soft-shadow:0 16px 38px -20px rgba(35,64,94,0.42);--maxw:1100px;
+    --display:"Fredoka",system-ui,sans-serif;--body:"Nunito",system-ui,-apple-system,sans-serif;--hand:"Caveat",cursive;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;color:var(--ink);font-family:var(--body);font-size:clamp(1.02rem,0.99rem + 0.2vw,1.12rem);line-height:1.65;-webkit-font-smoothing:antialiased;
+    background-color:var(--page);background-image:radial-gradient(rgba(63,177,172,0.16) 1.4px, transparent 1.4px);background-size:26px 26px;}
+  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.12;letter-spacing:-0.005em;margin:0;}
+  p{margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  .section{padding:clamp(56px,8vw,104px) 0;}
+  .eyebrow{font-family:var(--body);font-size:0.8rem;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:var(--teal-deep);display:inline-flex;align-items:center;gap:9px;}
+  .eyebrow::before{content:"";width:22px;height:3px;background:var(--teal);display:inline-block;border-radius:3px;}
+  .hand{font-family:var(--hand);font-weight:600;color:var(--red);font-size:1.5rem;line-height:1;}
+  .head{text-align:center;max-width:56ch;margin:0 auto clamp(34px,5vw,46px);}
+  .head .eyebrow{justify-content:center;}
+  .head h2{margin:14px auto 14px;}
+  .head .micro,.head .sub,.head .headp{margin-left:auto;margin-right:auto;}
+  .mark{position:relative;white-space:nowrap;}
+  .mark::after{content:"";position:absolute;left:-3%;right:-3%;bottom:-0.06em;height:0.5em;border-radius:7px;background:rgba(63,177,172,0.38);z-index:-1;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--display);font-weight:600;font-size:1.06rem;padding:17px 32px;border-radius:999px;border:3px solid transparent;cursor:pointer;text-decoration:none;transition:transform .15s ease,box-shadow .2s ease,background .2s ease;}
+  .btn-primary{background:var(--red-deep);color:#fff;box-shadow:0 14px 26px -12px rgba(210,41,58,.85);}
+  .btn-primary:hover{background:#bb2333;transform:translateY(-2px);}
+  .btn-teal{background:var(--teal);color:#fff;}
+  .btn-teal:hover{background:var(--teal-deep);transform:translateY(-2px);}
+  .btn-big{font-size:1.16rem;padding:20px 40px;}
+  .btn .arrow{transition:transform .15s ease;}
+  .btn:hover .arrow{transform:translateX(3px);}
+  .micro{font-size:0.92rem;color:var(--ink-soft);}
+  :focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px;border-radius:6px;}
+
+  /* brand logo */
+  .brandlogo{height:48px;width:auto;display:block;}
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 22px;max-width:var(--maxw);margin:0 auto;color:var(--navy-dark);}
+  .nav-cta{display:none;}
+  @media(min-width:760px){.nav-cta{display:inline-flex;padding:11px 22px;font-size:0.95rem;}}
+
+  /* hero */
+  .hero{padding:clamp(32px,5vw,60px) 0 clamp(48px,6vw,80px);text-align:center;}
+  .pre{display:inline-block;background:#fff;border:2px dashed var(--teal);color:var(--teal-deep);font-family:var(--display);font-weight:500;font-size:0.86rem;letter-spacing:.02em;padding:8px 18px;border-radius:999px;margin-bottom:20px;}
+  .hero h1{font-size:clamp(2.15rem,5.2vw,3.7rem);font-weight:600;margin:0 auto 18px;max-width:21ch;}
+  .hero h1 em{font-style:normal;color:var(--red);}
+  .hero .sub{font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--ink-soft);max-width:54ch;margin:0 auto 0;}
+  .vsl-shell{max-width:780px;margin:34px auto 0;position:relative;}
+  .vsl-note{position:absolute;left:50%;transform:translateX(-50%) rotate(-3deg);top:-34px;}
+  @media(min-width:680px){.vsl-note{left:auto;right:-28px;transform:rotate(-3deg);top:-20px;}}
+  .vsl-frame{border-radius:24px;overflow:hidden;border:4px solid #fff;box-shadow:var(--soft-shadow);background:var(--navy-dark);}
+  .hero-cta{margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .hero-reassure{font-size:0.96rem;color:var(--ink-soft);display:flex;align-items:center;gap:8px;justify-content:center;}
+  .hbenefits{list-style:none;padding:0;margin:34px auto 0;display:grid;gap:16px;max-width:920px;grid-template-columns:1fr;}
+  @media(min-width:760px){.hbenefits{grid-template-columns:repeat(3,1fr);}}
+  .hbenefits li{display:flex;gap:13px;align-items:flex-start;text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;font-weight:700;box-shadow:0 10px 24px -20px rgba(35,64,94,.5);}
+  .hbenefits .c{flex:0 0 auto;width:32px;height:32px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;margin-top:1px;}
+  .hbenefits li:nth-child(1) .c{background:var(--red);}
+  .hbenefits li:nth-child(2) .c{background:var(--teal);}
+  .hbenefits li:nth-child(3) .c{background:var(--blue);}
+
+  /* trust */
+  .trust{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .trust-inner{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 14px;padding:34px 22px;max-width:var(--maxw);margin:0 auto;text-align:center;}
+  @media(min-width:760px){.trust-inner{grid-template-columns:repeat(4,1fr);}}
+  .trust .num{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,3.4vw,2.3rem);line-height:1.05;color:var(--ink);}
+  .trust .num span{color:var(--red);}
+  .trust .lbl{font-size:0.82rem;letter-spacing:.02em;color:var(--ink-soft);margin-top:7px;font-weight:700;}
+
+  /* recognition */
+  .recognition h2{font-size:clamp(1.9rem,4vw,2.8rem);}
+  .signs{display:grid;grid-template-columns:1fr;gap:13px;}
+  @media(min-width:720px){.signs{grid-template-columns:1fr 1fr;}}
+  .sign{display:flex;gap:14px;align-items:flex-start;background:#fff;border:2px dashed var(--teal-soft);border-radius:18px;padding:20px 22px;text-align:left;}
+  .sign .ic{flex:0 0 auto;font-size:1.4rem;line-height:1;margin-top:1px;}
+  .sign p{font-size:1.02rem;}
+  .sign p b{font-weight:800;color:var(--red-deep);}
+  .recognition .closer{margin:32px auto 0;text-align:center;font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.8vw,1.8rem);max-width:28ch;line-height:1.25;color:var(--ink);}
+  .nudge{margin-top:14px;text-align:center;color:var(--red-deep);font-weight:800;}
+
+  /* stakes */
+  .stakes{background:var(--navy-dark);color:#E7EEF5;}
+  .stakes .eyebrow{color:var(--teal-soft);}
+  .stakes .eyebrow::before{background:var(--teal);}
+  .stakes h2{color:#fff;font-size:clamp(1.9rem,4vw,2.8rem);}
+  .stakes .sub{color:#C7D5E3;max-width:56ch;}
+  .stat-row{display:grid;grid-template-columns:1fr;gap:26px;}
+  @media(min-width:820px){.stat-row{grid-template-columns:repeat(3,1fr);}}
+  .stat{background:rgba(255,255,255,.06);border:1px solid rgba(231,238,245,.16);border-radius:18px;padding:26px;}
+  .stat .big{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,4.4vw,2.6rem);line-height:1.05;color:var(--teal-soft);}
+  .stat:nth-child(2) .big{color:#ff8a93;}
+  .stat .txt{margin-top:12px;color:#DCE6F0;font-size:1rem;}
+  .stat .src{margin-top:12px;font-size:0.76rem;color:#8A9BB0;}
+  .stakes .turn{margin-top:48px;padding:32px;border-radius:20px;background:rgba(63,177,172,.14);border:1px solid rgba(63,177,172,.34);display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justify-content:space-between;}
+  .stakes .turn p{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.6vw,1.7rem);color:#fff;max-width:26ch;line-height:1.25;}
+  .stakes .turn .small{font-family:var(--body);font-size:0.95rem;color:#DCE6F0;font-weight:700;margin-top:8px;}
+
+  /* method */
+  .method{background:var(--surface);}
+  .method h2{font-size:clamp(1.9rem,4vw,2.8rem);}
+  .method .headp{color:var(--ink-soft);max-width:48ch;}
+  .steps{display:grid;grid-template-columns:1fr;gap:16px;}
+  @media(min-width:760px){.steps{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1040px){.steps{grid-template-columns:repeat(4,1fr);}}
+  .step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 22px;}
+  .step .ring{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:1.25rem;margin-bottom:14px;color:#fff;}
+  .step:nth-child(1) .ring{background:var(--red);}
+  .step:nth-child(2) .ring{background:var(--teal);}
+  .step:nth-child(3) .ring{background:var(--blue);}
+  .step:nth-child(4) .ring{background:var(--teal-deep);}
+  .step h3{font-size:1.2rem;font-weight:600;margin-bottom:6px;}
+  .step p{font-size:0.98rem;color:var(--ink-soft);}
+  .method .ease{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:700;font-size:0.92rem;display:inline-flex;gap:8px;align-items:center;}
+
+  /* meg */
+  .meg-grid{display:grid;grid-template-columns:1fr;gap:clamp(30px,5vw,56px);align-items:center;}
+  @media(min-width:920px){.meg-grid{grid-template-columns:0.82fr 1.18fr;}}
+  .meg-photo{border-radius:24px;aspect-ratio:4/5;border:4px solid #fff;box-shadow:var(--soft-shadow);display:flex;align-items:flex-end;padding:20px;position:relative;overflow:hidden;}
+  .meg-photo .seal{position:absolute;top:16px;right:16px;width:82px;height:82px;border-radius:50%;background:var(--red);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:var(--display);font-size:0.7rem;line-height:1.1;padding:8px;}
+  .meg-photo .seal b{font-size:1.4rem;display:block;}
+  .meg h2{font-size:clamp(1.9rem,4vw,2.7rem);margin:12px 0 18px;max-width:22ch;}
+  .meg .body{color:var(--ink-soft);max-width:56ch;}
+  .meg .body + .body{margin-top:14px;}
+  .meg .pull{font-family:var(--display);font-weight:400;font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--ink);border-left:4px solid var(--red);padding-left:20px;margin:26px 0 8px;line-height:1.3;}
+  .meg .sign-off{font-family:var(--hand);font-size:1.9rem;color:var(--red);margin-top:6px;}
+  .creds{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px;}
+  .cred{font-size:0.82rem;font-weight:700;background:var(--surface);border:1px solid var(--line);padding:8px 14px;border-radius:999px;}
+
+  /* outcomes + proof */
+  .proof{background:var(--surface2);}
+  .proof h2{font-size:clamp(1.9rem,4vw,2.8rem);}
+  .proof .sub{color:var(--ink-soft);max-width:52ch;}
+  .outcomes{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:42px;}
+  @media(min-width:680px){.outcomes{grid-template-columns:1fr 1fr;}}
+  @media(min-width:1000px){.outcomes{grid-template-columns:repeat(4,1fr);}}
+  .oc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 22px;text-align:center;box-shadow:0 10px 24px -20px rgba(35,64,94,.5);}
+  .oc .ico{width:52px;height:52px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.5rem;}
+  .oc h3{font-size:1.12rem;font-weight:600;margin-bottom:6px;}
+  .oc p{font-size:0.94rem;color:var(--ink-soft);}
+  .testis{display:grid;grid-template-columns:1fr;gap:16px;}
+  @media(min-width:760px){.testis{grid-template-columns:repeat(3,1fr);}}
+  .testi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;}
+  .testi .stars{color:var(--red);letter-spacing:2px;margin-bottom:10px;}
+  .testi blockquote{margin:0;font-size:0.99rem;color:var(--ink);line-height:1.55;}
+  .testi .who{margin-top:14px;font-size:0.85rem;color:var(--ink-soft);font-weight:800;}
+
+  /* offer */
+  .offer{background:var(--surface);}
+  .offer-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:clamp(30px,5vw,54px);max-width:820px;margin:0 auto;text-align:center;box-shadow:var(--soft-shadow);}
+  .offer h2{font-size:clamp(2rem,4vw,2.9rem);margin:14px auto 16px;max-width:22ch;}
+  .offer .lead{color:var(--ink-soft);max-width:50ch;margin:0 auto 16px;}
+  .scarcity{display:inline-flex;align-items:center;gap:10px;background:var(--navy-dark);color:#fff;font-size:0.88rem;font-weight:800;padding:10px 18px;border-radius:999px;margin-bottom:8px;}
+  .scarcity .blip{width:9px;height:9px;border-radius:50%;background:var(--red);animation:pulse 2.4s infinite;}
+  .offer .guarantee{margin-top:24px;display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;color:var(--ink-soft);font-size:0.92rem;font-weight:700;}
+  .offer .guarantee span{display:inline-flex;align-items:center;gap:7px;}
+  .offer .guarantee b{color:var(--teal-deep);}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(228,60,72,.55);}70%{box-shadow:0 0 0 20px rgba(228,60,72,0);}100%{box-shadow:0 0 0 0 rgba(228,60,72,0);}}
+
+  /* faq */
+  .faq h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:32px;text-align:center;}
+  .faq-list{max-width:760px;margin:0 auto;}
+  details{border-bottom:1px solid var(--line);}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;font-family:var(--display);font-weight:500;font-size:clamp(1.08rem,2vw,1.3rem);}
+  summary::-webkit-details-marker{display:none;}
+  summary .pm{flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:3px solid var(--teal);position:relative;transition:transform .2s ease;}
+  summary .pm::before,summary .pm::after{content:"";position:absolute;background:var(--teal-deep);left:50%;top:50%;transform:translate(-50%,-50%);}
+  summary .pm::before{width:12px;height:2px;}
+  summary .pm::after{width:2px;height:12px;transition:opacity .2s ease;}
+  details[open] summary .pm::after{opacity:0;}
+  details[open] summary .pm{transform:rotate(90deg);}
+  details .ans{padding:0 4px 22px;color:var(--ink-soft);max-width:64ch;}
+
+  /* final */
+  .final{background:var(--navy-dark);color:#fff;text-align:center;}
+  .final .kicker{font-family:var(--hand);color:var(--teal-soft);font-size:clamp(1.7rem,3vw,2.2rem);margin-bottom:6px;}
+  .final h2{color:#fff;font-size:clamp(2.1rem,5vw,3.2rem);max-width:20ch;margin:0 auto 16px;}
+  .final p{color:#C7D5E3;max-width:46ch;margin:0 auto 30px;}
+
+  /* footer */
+  footer.ft{background:#16273D;color:#9FB1C6;padding:46px 0 120px;}
+  .ft-inner{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start;color:#fff;}
+  .ft-inner .brandlogo{height:52px;}
+  .ft a{color:#DCE6F0;text-decoration:none;}
+  .ft a:hover{text-decoration:underline;}
+  .ft .contact p{margin:6px 0;font-size:0.95rem;color:#9FB1C6;}
+  .ft .sources{font-size:0.74rem;color:#6E7F95;max-width:64ch;margin-top:22px;line-height:1.5;}
+  .ft .legal{font-size:0.74rem;color:#6E7F95;margin-top:14px;}
+
+  /* sticky mobile cta */
+  .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(255,255,255,0.97);border-top:1px solid var(--line);padding:11px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 -10px 30px -18px rgba(35,64,94,.5);}
+  .sticky-cta .s-txt{font-weight:800;font-size:0.92rem;line-height:1.15;}
+  .sticky-cta .s-txt small{display:block;font-weight:600;color:var(--ink-soft);font-size:0.78rem;}
+  .sticky-cta .btn{padding:13px 18px;font-size:0.92rem;white-space:nowrap;}
+  @media(min-width:760px){.sticky-cta{display:none;} footer.ft{padding-bottom:46px;}}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){*{animation:none !important;scroll-behavior:auto !important;}.reveal{opacity:1 !important;transform:none !important;}}
+</style>
+</head>
+<body>
+
+<!-- ====== reusable brand logo (SVG) ====== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" aria-label="On Track home">
+      <svg class="brandlogo" viewBox="0 0 372 84" role="img" aria-label="On Track — Academic Management" xmlns="http://www.w3.org/2000/svg">
+        <path d="M44 54 C33 46 18 46 8 51 L8 72 C18 67 33 67 44 73 Z" fill="#A6DBD7"/>
+        <path d="M44 54 C55 46 70 46 80 51 L80 72 C70 67 55 67 44 73 Z" fill="#3FB1AC"/>
+        <path d="M44 54 L44 73" stroke="#1E3450" stroke-width="2.4" stroke-linecap="round" opacity=".22"/>
+        <path d="M25 31 l9.5 9.5 l21 -23" fill="none" stroke="#E43C48" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="100" y="46" font-family="Fredoka, sans-serif" font-weight="500" font-size="40" fill="currentColor">On<tspan font-weight="700" dx="3">Track</tspan></text>
+        <text x="102" y="67" font-family="Nunito, sans-serif" font-weight="800" font-size="12.5" letter-spacing="3.4" fill="currentColor" opacity=".6">ACADEMIC MANAGEMENT</text>
+      </svg>
+    </a>
+    <a class="btn btn-primary nav-cta" href="/form">Book a parent consultation</a>
+  </div>
+</header>
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="pre">For parents of middle &amp; high schoolers who are capable &mdash; but slipping</span>
+    <h1>Your child isn't failing because they're not smart. <em>They're missing a system.</em></h1>
+    <p class="sub">On Track is academic management for grades 6&ndash;12. We step in as your child's academic manager &mdash; organizing assignments, building accountability, and making sure the work actually gets done. So the grades stabilize, and the nightly battles stop.</p>
+
+    <div class="vsl-shell">
+      <div class="vsl-note hand">press play &darr;</div>
+      <div class="vsl-frame">
+        <div id="vidalytics_embed_exf6akSLFOORwppc" style="width: 100%; position:relative; padding-top: 56.25%;"></div>
+        <script type="text/javascript">
+        (function (v, i, d, a, l, y, t, c, s) {
+            y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
+            if (!vsl){vsl=function(u,cb){
+                if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+                if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+                i.getElementsByTagName("head")[0].appendChild(s);
+            };}
+            vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+        })(window, document, 'Vidalytics', 'vidalytics_embed_exf6akSLFOORwppc', 'https://fast.vidalytics.com/embeds/aqLBzbf2/exf6akSLFOORwppc/');
+        </script>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary btn-big" href="/form">Book a parent consultation <span class="arrow">&rarr;</span></a>
+      <p class="hero-reassure">&#9989;&nbsp; A calm, no-pressure call &mdash; just for parents. We'll tell you honestly if it's a fit.</p>
+    </div>
+
+    <ul class="hbenefits">
+      <li><span class="c">&check;</span> We manage the follow-through &mdash; not just an hour of homework help</li>
+      <li><span class="c">&check;</span> Less reminding, less arguing, less stress at home</li>
+      <li><span class="c">&check;</span> Built for capable kids who are disorganized or overwhelmed</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="reveal"><div class="num">Grades 6&ndash;12</div><div class="lbl">Middle &amp; high school</div></div>
+    <div class="reveal"><div class="num">1<span>:</span>1</div><div class="lbl">A dedicated academic manager</div></div>
+    <div class="reveal"><div class="num">20<span>+</span> yrs</div><div class="lbl">In education, led by Dr. Meg</div></div>
+    <div class="reveal"><div class="num">MindPrint</div><div class="lbl">Learning assessment</div></div>
+  </div>
+</div>
+
+<!-- RECOGNITION -->
+<section class="section recognition">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">You already know</span>
+      <h2>This probably sounds like your house.</h2>
+      <p class="micro" style="font-size:1.05rem;color:var(--ink-soft);">If a few of these hit home, you're exactly who we built On Track for.</p>
+    </div>
+    <div class="signs">
+      <div class="sign reveal"><span class="ic">&#128241;</span><p>You check the grade portal <b>every day</b>, bracing for the next bad surprise.</p></div>
+      <div class="sign reveal"><span class="ic">&#128533;</span><p>"It's done." <b>(It was not done.)</b></p></div>
+      <div class="sign reveal"><span class="ic">&#128201;</span><p>One missing assignment quietly turns into <b>five</b>.</p></div>
+      <div class="sign reveal"><span class="ic">&#129300;</span><p>A kid who tests fine &mdash; but the report card <b>doesn't match</b>.</p></div>
+      <div class="sign reveal"><span class="ic">&#128165;</span><p>Every homework conversation ends in the <b>same argument</b>.</p></div>
+      <div class="sign reveal"><span class="ic">&#128557;</span><p>You care more about their grades than <b>they seem to</b>.</p></div>
+    </div>
+    <p class="closer reveal">This isn't a smarts problem. It's a <span class="mark">systems problem.</span></p>
+    <p class="nudge reveal">And here's how it quietly snowballs &darr;</p>
+  </div>
+</section>
+
+<!-- STAKES -->
+<section class="section stakes" id="stakes">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">The missing-assignment spiral</span>
+      <h2>A small gap doesn't stay small.</h2>
+      <p class="sub">We're not here to scare you &mdash; this is one of the most common things we see. But it helps to understand how a little slip becomes a big one.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat reveal">
+        <div class="big">1 &rarr; 5</div>
+        <p class="txt">One missing assignment becomes five, fast. Then grades drop, motivation drops, and avoidance takes over &mdash; because catching up now feels impossible.</p>
+      </div>
+      <div class="stat reveal">
+        <div class="big">Still developing</div>
+        <p class="txt">The part of the brain that runs planning, organizing, and follow-through keeps developing all through the teen years. This is a skill gap &mdash; not laziness.</p>
+        <p class="src">Widely established in developmental neuroscience</p>
+      </div>
+      <div class="stat reveal">
+        <div class="big">These years count</div>
+        <p class="txt">Middle and high school are when habits harden and the transcript starts to matter. The longer the pattern runs, the harder it is to undo on your own.</p>
+      </div>
+    </div>
+    <div class="turn reveal">
+      <div>
+        <p>The good news: capable kids stabilize fast once the system is in place.</p>
+        <p class="small">With structure, accountability, and someone actively managing the follow-through, the missing assignments and the nightly stress start dropping &mdash; usually sooner than parents expect.</p>
+      </div>
+      <a class="btn btn-teal" href="/form">See if it's a fit <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="section method">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">How On Track works</span>
+      <h2>Simple for you. Structured for your child.</h2>
+      <p class="headp">We don't re-teach algebra. We manage the <em>process</em> &mdash; so things actually get done.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="ring">1</div><h3>Assessment &amp; parent consult</h3><p>A MindPrint learning assessment plus a conversation, so we understand how your child learns and exactly where execution breaks down.</p></div>
+      <div class="step reveal"><div class="ring">2</div><h3>A plan &amp; a manager</h3><p>We organize assignments, prioritize the workload, and set up a system built around your child &mdash; with one person owning it.</p></div>
+      <div class="step reveal"><div class="ring">3</div><h3>Weekly accountability</h3><p>We meet 2&ndash;3 times a week to plan, prioritize, and make sure the work gets done &mdash; assignments, deadlines, and follow-through.</p></div>
+      <div class="step reveal"><div class="ring">4</div><h3>Toward independence</h3><p>Over time, stronger habits and more independence &mdash; and a lot less managing from you.</p></div>
+    </div>
+    <div class="ease reveal">
+      <span class="pill">&#128197; 2&ndash;3 sessions / week</span>
+      <span class="pill">&#9989; We track portals &amp; deadlines</span>
+      <span class="pill">&#129309; You stop being the homework police</span>
+      <span class="pill">&#127919; The goal is independence</span>
+    </div>
+  </div>
+</section>
+
+<!-- MEG -->
+<section class="section meg">
+  <div class="wrap meg-grid">
+    <div class="reveal">
+      <div class="meg-photo" style="background-image:url('assets/img/dr-meg.jpg');background-size:cover;background-position:center 28%;">
+        <div class="seal"><b>Ed.D</b>Doctor of<br>Education</div>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Who's behind On Track</span>
+      <h2 class="reveal">Built by Dr. Meg Murray &mdash; an educator who's seen this a thousand times.</h2>
+      <div class="reveal">
+        <p class="body">Dr. Meg has a doctorate in education and more than 20 years working with students and families. She's watched the same thing happen again and again: a capable, bright kid slowly falls behind &mdash; not because they aren't smart, but because no one ever built the systems to hold it all together.</p>
+        <p class="body">She's also a mom of four, so she knows the nightly battles from both sides of the kitchen table. On Track is the academic manager she wished every overwhelmed family had.</p>
+        <p class="pull">"Most students don't need someone smarter explaining algebra again. They need structure, accountability, and someone making sure things actually get done."</p>
+        <p class="sign-off">&ndash; Dr. Meg</p>
+        <div class="creds">
+          <span class="cred">Doctorate in education</span>
+          <span class="cred">20+ years in education</span>
+          <span class="cred">Mom of four</span>
+          <span class="cred">Founder, On Track</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES + PROOF -->
+<section class="section proof">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">What changes</span>
+      <h2>Less chaos. Less conflict. More getting done.</h2>
+      <p class="sub">Most families don't see straight A's overnight. They see this &mdash; and they feel it at home.</p>
+    </div>
+    <div class="outcomes">
+      <div class="oc reveal"><div class="ico">&#128203;</div><h3>Fewer missing assignments</h3><p>Work stops slipping through the cracks.</p></div>
+      <div class="oc reveal"><div class="ico">&#127968;</div><h3>Calmer evenings</h3><p>Less reminding, less arguing, less tension around school.</p></div>
+      <div class="oc reveal"><div class="ico">&#128260;</div><h3>Consistency, week to week</h3><p>A system that holds even when motivation dips.</p></div>
+      <div class="oc reveal"><div class="ico">&#128170;</div><h3>Growing independence</h3><p>Your child starts owning it &mdash; and you carry less.</p></div>
+    </div>
+
+    <!-- TODO: replace these 3 placeholders with REAL On Track parent quotes (with permission). -->
+    <div class="testis">
+      <div class="testi reveal"><div class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;[Add a real parent quote &mdash; e.g. how the missing assignments stopped and the nightly arguing went away.]&rdquo;</blockquote><p class="who">&mdash; Parent name, City &middot; <em>(placeholder)</em></p></div>
+      <div class="testi reveal"><div class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;[Add a real result &mdash; grades stabilizing, or your child finally getting organized on their own.]&rdquo;</blockquote><p class="who">&mdash; Parent name, City &middot; <em>(placeholder)</em></p></div>
+      <div class="testi reveal"><div class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;[Add a quote about relief &mdash; how it feels to not be the homework police anymore.]&rdquo;</blockquote><p class="who">&mdash; Parent name, City &middot; <em>(placeholder)</em></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="section offer" id="book">
+  <div class="wrap">
+    <div class="offer-card reveal">
+      <span class="scarcity"><span class="blip"></span> Hands-on 1:1 management &mdash; spots are limited</span>
+      <h2>Start with a parent consultation.</h2>
+      <p class="lead">It's a calm, no-pressure conversation &mdash; just for parents. We'll walk through what's going on, see whether On Track is the right fit for your child, and show you exactly how the program works.</p>
+      <p class="lead"><b>You don't have to keep carrying the entire mental load yourself.</b></p>
+      <a class="btn btn-primary btn-big" href="/form" style="margin-top:6px;">Book a parent consultation <span class="arrow">&rarr;</span></a>
+      <div class="guarantee">
+        <span><b>&check;</b> Not tutoring &mdash; academic management</span>
+        <span><b>&check;</b> For grades 6&ndash;12</span>
+        <span><b>&check;</b> No pressure, ever</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq">
+  <div class="wrap">
+    <h2 class="reveal">Questions parents ask first</h2>
+    <div class="faq-list">
+      <details class="reveal"><summary>Is this just tutoring?<span class="pm"></span></summary><div class="ans">No. Tutoring re-teaches content for an hour and then disappears until next week. On Track manages the <em>process</em> &mdash; organization, accountability, and follow-through &mdash; so the work actually gets done. It can work right alongside a tutor.</div></details>
+      <details class="reveal"><summary>What ages is this for?<span class="pm"></span></summary><div class="ans">Middle and high school students &mdash; roughly grades 6 through 12 &mdash; who are capable but inconsistent, disorganized, or overwhelmed.</div></details>
+      <details class="reveal"><summary>How often will you work with my child?<span class="pm"></span></summary><div class="ans">Most students start with 2 sessions a week (our Core program) or 3 (Intensive), depending on how much support they need. We'll recommend the right level on your consultation.</div></details>
+      <details class="reveal"><summary>Do you actually work with their teachers and portals?<span class="pm"></span></summary><div class="ans">Yes. We help track assignments and deadlines and keep the whole academic process organized, so nothing falls through the cracks.</div></details>
+      <details class="reveal"><summary>Will my child even listen to you?<span class="pm"></span></summary><div class="ans">Usually, yes. When accountability comes from an outside adult whose only job is the academic process, the dynamic changes &mdash; and it finally gets <em>you</em> out of the role of constant enforcer.</div></details>
+      <details class="reveal"><summary>Isn't my child just being lazy?<span class="pm"></span></summary><div class="ans">Almost never. It's usually executive-function skills that are still developing, plus genuine overwhelm. The fix is structure and accountability &mdash; not more pressure.</div></details>
+      <details class="reveal"><summary>What happens on the consultation?<span class="pm"></span></summary><div class="ans">It's a relaxed parent call. We learn what's going on, tell you honestly whether we can help, and explain how the program works. No pressure to sign up.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="section final">
+  <div class="wrap">
+    <p class="kicker reveal">It doesn't have to be a battle.</p>
+    <h2 class="reveal">Your child can get back on track.</h2>
+    <p class="reveal">Book a parent consultation. Walk away knowing exactly what's going on &mdash; and what to do about it.</p>
+    <a class="btn btn-teal btn-big reveal" href="/form">Book a parent consultation <span class="arrow">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="wrap ft-inner">
+    <div>
+      <svg class="brandlogo" viewBox="0 0 372 84" role="img" aria-label="On Track — Academic Management" xmlns="http://www.w3.org/2000/svg">
+        <path d="M44 54 C33 46 18 46 8 51 L8 72 C18 67 33 67 44 73 Z" fill="#A6DBD7"/>
+        <path d="M44 54 C55 46 70 46 80 51 L80 72 C70 67 55 67 44 73 Z" fill="#3FB1AC"/>
+        <path d="M44 54 L44 73" stroke="#16273D" stroke-width="2.4" stroke-linecap="round" opacity=".3"/>
+        <path d="M25 31 l9.5 9.5 l21 -23" fill="none" stroke="#E43C48" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="100" y="46" font-family="Fredoka, sans-serif" font-weight="500" font-size="40" fill="currentColor">On<tspan font-weight="700" dx="3">Track</tspan></text>
+        <text x="102" y="67" font-family="Nunito, sans-serif" font-weight="800" font-size="12.5" letter-spacing="3.4" fill="currentColor" opacity=".62">ACADEMIC MANAGEMENT</text>
+      </svg>
+      <p style="margin-top:14px;max-width:34ch;font-size:0.92rem;color:#9FB1C6;">Academic management for middle &amp; high school students. A program of Be Alright Tutoring.</p>
+    </div>
+    <div class="contact">
+      <p><b style="color:#fff;">Dr. Meg Murray</b></p>
+      <p><a href="tel:7325694413">732.569.4413</a></p>
+      <p><a href="mailto:drmeg@bealrighttutoring.com">drmeg@bealrighttutoring.com</a></p>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="sources">Note: the general timeline of executive-function and brain development referenced above is widely established in developmental neuroscience. Individual results vary by student.</p>
+    <p class="legal">&copy; <span id="yr"></span> On Track &middot; a program of Be Alright Tutoring. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <div class="s-txt">Get your child back on track<small>Parent consultation &middot; no pressure</small></div>
+  <a class="btn btn-primary" href="/form">Book now</a>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  (function(){
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items=document.querySelectorAll('.reveal');
+    if(reduce||!('IntersectionObserver' in window)){items.forEach(function(el){el.classList.add('in');});return;}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    items.forEach(function(el,i){el.style.transitionDelay=Math.min(i%4*0.06,0.18)+'s';io.observe(el);});
+  })();
+</script>
+</body>
+</html>
